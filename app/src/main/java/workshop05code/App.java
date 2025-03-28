@@ -43,7 +43,7 @@ public class App {
             logger.log(Level.INFO, "Wordle database connection established successfully.");
         } else {
             logger.log(Level.SEVERE,"ERROR: Unable to establish database connection.");
-            getFailedMessage();
+            System.out.println("Failed launch Wordle.");
             return;
         }
         
@@ -51,7 +51,7 @@ public class App {
             logger.log(Level.INFO,"Database tables created successfully.");
         } else {
             logger.log(Level.SEVERE,"ERROR: Failed to create database tables.");
-            getFailedMessage();
+            System.out.println("Failed launch Wordle.");
             return;
         }
 
@@ -68,7 +68,7 @@ public class App {
 
         } catch (IOException e) {
             logger.log(Level.SEVERE, "ERROR: Could not load words from data.txt.", e);
-            getFailedMessage();
+            System.out.println("Failed launch Wordle.");
             return;
         }
 
@@ -100,11 +100,7 @@ public class App {
             }
         } catch (NoSuchElementException | IllegalStateException e) {
             logger.log(Level.SEVERE, "Unexpected input error.", e);
-            getFailedMessage();
+            System.out.println("Unexpected error occurred. Exiting Wordle.");
         }
-    }
-
-    private static void getFailedMessage() {
-        System.out.println("Unexpected error occurred. Exiting Wordle.");
     }
 }
