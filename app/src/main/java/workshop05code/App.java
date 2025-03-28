@@ -17,18 +17,18 @@ import java.util.logging.Logger;
  */
 public class App {
     // Start code for logging exercise
-    private static final Logger logger = Logger.getLogger(App.class.getName());
-
     static {
         // must set before the Logger
         // loads logging.properties from the classpath
         try {// resources\logging.properties
             LogManager.getLogManager().readConfiguration(new FileInputStream("resources/logging.properties"));
         } catch (SecurityException | IOException e1) {
-            logger.log(Level.SEVERE, "Failed to load logging configuration.", e1);
+            Logger.getLogger(SQLiteConnectionManager.class.getName()).log(Level.SEVERE, "Failed to load logging configuration.", e1);
             System.out.println("Failed launch Wordle.");
         }
     }
+
+    private static final Logger logger = Logger.getLogger(App.class.getName());
     // End code for logging exercise
     
     /**

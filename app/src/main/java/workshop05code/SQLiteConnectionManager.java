@@ -24,7 +24,7 @@ public class SQLiteConnectionManager {
     try {// resources\logging.properties
       LogManager.getLogManager().readConfiguration(new FileInputStream("resources/logging.properties"));
     } catch (SecurityException | IOException e1) {
-      e1.printStackTrace();
+      Logger.getLogger(SQLiteConnectionManager.class.getName()).log(Level.SEVERE, "Failed to load logging configuration.", e1);
     }
   }
 
