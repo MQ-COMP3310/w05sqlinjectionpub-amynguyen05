@@ -75,26 +75,21 @@ public class App {
         // let's get them to enter a word
 
         try (Scanner scanner = new Scanner(System.in)) {
-            logger.log(Level.INFO, "Waiting for user's guess");
-
             System.out.println("Welcome to Wordle");
             System.out.print("Enter a 4 letter word for a guess or 'q' to quit: ");
 
             String guess = scanner.nextLine();
 
             while (!guess.equals("q")) {
-                logger.log(Level.INFO, "User entered: '" + guess + "'.");
                 System.out.println("You've guessed '" + guess+"'.");
 
                 if (wordleDatabaseConnection.isValidWord(guess)) { 
-                    logger.log(Level.INFO, "Valid guess!");
                     System.out.println("Success! It is in the the list.\n");
                 }else{
-                    logger.log(Level.WARNING, "Invalid guess!");
+                    logger.log(Level.WARNING, "Invalid guess! '" + guess+"'.");
                     System.out.println("Sorry. This word is NOT in the the list.\n");
                 }
 
-                logger.log(Level.INFO, "Waiting for user's guess");
                 System.out.print("Enter a 4 letter word for a guess or 'q' to quit: " );
                 guess = scanner.nextLine();
             }
